@@ -1,0 +1,17 @@
+apiVersion: helm.crossplane.io/v1beta1
+kind: Release
+metadata:
+  name: wordpress
+spec:
+  forProvider:
+    chart:
+      name: wordpress
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: "24.1.5"
+    namespace: wordpress
+    values:
+      service:
+        type: ClusterIP
+  providerConfigRef:
+    name: providerconfig-helm
+
